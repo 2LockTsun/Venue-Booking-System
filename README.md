@@ -1,6 +1,7 @@
 # Classroom Booking System
 
 This is a project for my SBA.
+> **Status** : There is still some empty folder haven't push up to main.
 
 ## Basic Start Up Guide
 
