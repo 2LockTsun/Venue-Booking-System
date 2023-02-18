@@ -20,7 +20,6 @@ export default function Main() {
 				</div>
 			</Link>
 		</div>
-		<Table/>
 		<div className={styles.center}>
 			<div>
 				Welcom to Classroom Booking System!<br/>
