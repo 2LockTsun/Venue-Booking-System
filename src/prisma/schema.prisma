@@ -6,6 +6,38 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Booking {
+  id Int @id @default(autoincrement())
+
+  roomCode String
+  teacherCode String
+  purpose String
+
+  bookingDate DateTime
+  createDate DateTime @default(now())
+  UpdateDate DateTime @updatedAt
+
+  User User @relation(fields: [teacherCode], references: [teacherCode])
+  Venue Venue @relation(fields: [roomCode], references: [roomCode])
+}
+
+model User {
+  id   Int @id @default(autoincrement())
+
+  name String?
+  email String @unique
+  password String
+  teacherCode String @unique
+
+  Booking Booking[]
+}
+
+model Venue{
+  roomCode String @id
+  roomName String
+  Booking Booking[]
 }
