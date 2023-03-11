@@ -1,10 +1,10 @@
-# Classroom Booking System
+# Venue Booking System
 
 This is a project for my SBA.
 > **Status** : This system is still in development.
 
 ## Table of Content
-- [Classroom Booking System](#classroom-booking-system)
+- [Venue Booking System](#venue-booking-system)
   - [Table of Content](#table-of-content)
   - [Basic Start Up Guide](#basic-start-up-guide)
       - [Environment](#environment)
@@ -20,6 +20,8 @@ Make sure you have installed [node.js with npm](https://nodejs.org/en/) before y
 ```bash
 cd src
 npm install
+npm install --save-dev
+npm run build
 npm run start
 ```
 
