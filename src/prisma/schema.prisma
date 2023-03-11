@@ -14,24 +14,25 @@ model Booking {
   id Int @id @default(autoincrement())
 
   roomCode String
-  teacherCode String
+  staffInitial String
   purpose String
 
   bookingDate DateTime
   createDate DateTime @default(now())
   UpdateDate DateTime @updatedAt
 
-  User User @relation(fields: [teacherCode], references: [teacherCode])
+  Staff Staff @relation(fields: [staffInitial], references: [staffInitial])
   Venue Venue @relation(fields: [roomCode], references: [roomCode])
 }
 
-model User {
+model Staff {
   id   Int @id @default(autoincrement())
+  admin Boolean @default(false)
 
   name String?
   email String @unique
   password String
-  teacherCode String @unique
+  staffInitial String @unique
 
   Booking Booking[]
 }
@@ -39,5 +40,6 @@ model User {
 model Venue{
   roomCode String @id
   roomName String
+
   Booking Booking[]
 }
