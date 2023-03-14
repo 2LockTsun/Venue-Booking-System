@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { Inter } from '@next/font/google';
 import styles from './page.module.css';
+// import useSWR from 'swr';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Main() {
+	// const { data, error } = useSWR('/api/booking', fetcher)
+	// if (error) return <div>An error occured.</div>
+	// if (!data) return <div>Loading ...</div>
+	
 	return <main className={styles.main}>
 		<div style={styles.home}>
 			<Link href={'/test'}>
