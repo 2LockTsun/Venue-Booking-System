@@ -25,7 +25,7 @@ npm run build
 npm run start
 ```
 
-Then open the website https://localhost:3000 in your browser.
+Then open the website http://localhost:3000 in your browser.
 
 ## Reference
 
