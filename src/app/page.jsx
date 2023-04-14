@@ -1,29 +1,35 @@
-import Link from 'next/link';
-import { Inter } from '@next/font/google';
-import styles from './page.module.css';
-
-const inter = Inter({ subsets: ['latin'] });
+'use client';
+import { Box, Container, Toolbar } from '@mui/material';
+import CustomAppBar from '@/components/CustomAppBar';
 
 export default function Main() {
-	return <main className={styles.main}>
-		<div style={styles.home}>
-			<Link href={'/test'}>
-				<h1>Test</h1>
-			</Link>
-			<Link href={'/'}>
-				<div style={styles.h1}>
-					Check booked
-				</div>
-			</Link>
-		</div>
-		<div className={styles.center}>
-			<div>
-				Welcom to Classroom Booking System!<br/>
-				Choose the function from the above.
-			</div>
-		</div>
-		<div>
-			This is the footer.
-		</div>
-	</main>;
+    return (
+        <Box>
+            <CustomAppBar />
+            <Box>
+                <Toolbar />
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'yellow',
+                        height: '45em'
+                    }}
+                >
+                    <Box
+                        sx={{
+                            backgroundColor: 'red',
+                            width: '30em',
+                            height: '10em',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        Hi
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
+    );
 }
