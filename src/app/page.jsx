@@ -11,22 +11,24 @@ export default function Main() {
                 <Box
                     sx={{
                         display: 'flex',
+                        flex: 1,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: 'yellow',
                         height: '45em'
                     }}
                 >
                     <Box
+                        display="flex"
                         sx={{
-                            backgroundColor: 'red',
                             width: '30em',
                             height: '10em',
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}
                     >
-                        Hi
+                        <Box sx={{ fontSize: 30 }}>
+                            Welcome To Venue Booking System
+                        </Box>
                     </Box>
                 </Box>
             </Box>
