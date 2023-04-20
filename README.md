@@ -12,6 +12,7 @@ This is a project for my SBA.
   - [Reference](#reference)
 
 ## Basic Start Up Guide
+> [Refer to Wiki](https://github.com/2LockTsun/Venue-Booking-System/wiki/Getting-Started)
 
 #### Environment
 Make sure you have installed [node.js with npm](https://nodejs.org/en/) before you start to use this project.
