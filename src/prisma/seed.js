@@ -1,9 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
 async function main() {
     const venueData = [
-        {roomCode: 'CH', roomName: 'Cyber Hab'},
+        {roomCode: 'CH', roomName: 'Cyber Hub'},
         {roomCode: 'I', roomName: 'Inno Lab'},
         {roomCode: 'SC', roomName: 'STEAM Cave'},
         {roomCode: 'IL', roomName: 'Idea Lounge'},
@@ -14,7 +14,7 @@ async function main() {
         {roomCode: 'LT', roomName: 'Lecture Theatre'},
     ]
 
-    await venueData.forEach((data) => prisma.venue.upsert({
+    await venueData.map((data) => prisma.venue.upsert({
         where: { roomCode: data.roomCode },
         update: {},
         create: { roomCode: data.roomCode, roomName: data.roomName }
@@ -26,9 +26,21 @@ async function main() {
         create: {
             admin: true,
             name: 'Admin',
-            email: 'admin@cpu.edu.hk',
+            email: 'admin@dlthk.games',
             password: 'admin',
             staffInitial: 'ADM',
+        }
+    })
+
+    await prisma.staff.upsert({
+        where: { staffInitial: 'USR' },
+        update: {},
+        create: {
+            admin: false,
+            name: 'User',
+            email: 'user@dlthk.games',
+            password: 'user',
+            staffInitial: 'USR',
         }
     })
 
@@ -36,7 +48,7 @@ async function main() {
         where: { staffInitial: 'KA' },
         update: {},
         create: {
-            admin: true,
+            admin: false,
             name: 'Chan Ka Lun',
             email: 'ka@cpu.edu.hk',
             password: 'ka',
@@ -48,7 +60,7 @@ async function main() {
         where: { staffInitial: 'YA' },
         update: {},
         create: {
-            admin: true,
+            admin: false,
             email: 'ya@cpu.edu.hk',
             password: 'ya',
             staffInitial: 'YA',

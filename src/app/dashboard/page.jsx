@@ -17,16 +17,13 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-import CustomAppBar from '@/components/CustomAppBar';
+import CustomAppBar from '@/components/global/CustomAppBar';
 import Overview from '@/components/dashboard/Overview';
 import Profile from '@/components/dashboard/Profile';
 import Settings from '@/components/dashboard/Settings';
 import Calendar from '@/components/dashboard/Calendar';
 
 export default function Page() {
-    const [login, setLogin] = React.useState(true);
-    if (!login) return redirect('/login');
-
     const [state, setState] = React.useState(0);
 
     return (
@@ -53,7 +50,17 @@ export default function Page() {
                             { text: 'Settings', icon: <SettingsIcon /> }
                         ].map((item, index) => (
                             <ListItem key={item.text} disablePadding>
-                                <ListItemButton onClick={() => setState(index)}>
+                                <ListItemButton
+                                    // onClick={React.useEffect(() => {
+                                    //     async function changePage() {
+                                    //         const result =
+                                    //             await Promise.resolve(index);
+                                    //         setState(result);
+                                    //     }
+                                    //     changePage();
+                                    // }, [])}
+                                    onClick={() => setState(index)}
+                                >
                                     <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.text} />
                                 </ListItemButton>
@@ -62,7 +69,7 @@ export default function Page() {
                     </List>
                 </Box>
             </Drawer>
-            <Container fixed sx={{ flexGrow: 1, p: 2 }}>
+            <Container display="flex" sx={{ flexGrow: 1, p: 2 }}>
                 <Toolbar />
                 {[<Overview />, <Calendar />, <Profile />, <Settings />][state]}
             </Container>

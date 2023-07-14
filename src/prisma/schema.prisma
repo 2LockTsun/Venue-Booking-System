@@ -13,31 +13,31 @@ datasource db {
 model Booking {
   id Int @id @default(autoincrement())
 
-  roomCode String
+  roomCode     String
   staffInitial String
-  purpose String
+  purpose      String
 
   bookingDate DateTime
-  createDate DateTime @default(now())
-  UpdateDate DateTime @updatedAt
+  createDate  DateTime @default(now())
+  UpdateDate  DateTime @updatedAt
 
-  Staff Staff @relation(fields: [staffInitial], references: [staffInitial])
-  Venue Venue @relation(fields: [roomCode], references: [roomCode])
+  Staff Staff? @relation(fields: [staffInitial], references: [staffInitial])
+  Venue Venue? @relation(fields: [roomCode], references: [roomCode])
 }
 
 model Staff {
-  id   Int @id @default(autoincrement())
+  id    Int     @id @default(autoincrement())
   admin Boolean @default(false)
 
-  name String?
-  email String @unique
-  password String
-  staffInitial String @unique
+  name         String?
+  email        String  @unique
+  password     String
+  staffInitial String  @unique
 
   Booking Booking[]
 }
 
-model Venue{
+model Venue {
   roomCode String @id
   roomName String
 
