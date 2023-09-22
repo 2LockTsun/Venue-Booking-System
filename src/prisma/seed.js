@@ -2,23 +2,53 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-    const venueData = [
-        {roomCode: 'CH', roomName: 'Cyber Hub'},
-        {roomCode: 'I', roomName: 'Inno Lab'},
-        {roomCode: 'SC', roomName: 'STEAM Cave'},
-        {roomCode: 'IL', roomName: 'Idea Lounge'},
-        {roomCode: 'MC', roomName: 'MMLC'},
-        {roomCode: 'GP', roomName: 'GP Room'},
-        {roomCode: 'A', roomName: 'Art Room'},
-        {roomCode: 'M', roomName: 'Music Room'},
-        {roomCode: 'LT', roomName: 'Lecture Theatre'},
-    ]
 
-    await venueData.map((data) => prisma.venue.upsert({
-        where: { roomCode: data.roomCode },
+    await prisma.venue.upsert({
+        where: {roomCode: 'CH',},
         update: {},
-        create: { roomCode: data.roomCode, roomName: data.roomName }
-    }))
+        create: {roomCode: 'CH', roomName: 'Cyber Hub'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'I', },
+        update: {},
+        create: {roomCode: 'I', roomName: 'Inno Lab'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'SC',},
+        update: {},
+        create: {roomCode: 'SC', roomName: 'STEAM Cave'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'IL',},
+        update: {},
+        create: {roomCode: 'IL', roomName: 'Idea Lounge'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'MC',},
+        update: {},
+        create: {roomCode: 'MC', roomName: 'MMLC'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'GP',},
+        update: {},
+        create: {roomCode: 'GP', roomName: 'GP Room'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'A', },
+        update: {},
+        create: {roomCode: 'A', roomName: 'Art Room'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'M', },
+        update: {},
+        create: {roomCode: 'M', roomName: 'Music Room'},
+    })
+    await prisma.venue.upsert({
+        where: {roomCode: 'LT',},
+        update: {},
+        create: {roomCode: 'LT', roomName: 'Lecture Theatre'},
+    })
+
 
     await prisma.staff.upsert({
         where: { staffInitial: 'ADM' },

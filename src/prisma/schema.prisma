@@ -17,9 +17,10 @@ model Booking {
   staffInitial String
   purpose      String
 
-  bookingDate DateTime
-  createDate  DateTime @default(now())
-  UpdateDate  DateTime @updatedAt
+  bookingPeriod String
+  bookingDate   DateTime
+  createDate    DateTime @default(now())
+  UpdateDate    DateTime @updatedAt
 
   Staff Staff? @relation(fields: [staffInitial], references: [staffInitial])
   Venue Venue? @relation(fields: [roomCode], references: [roomCode])

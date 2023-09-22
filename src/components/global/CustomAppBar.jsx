@@ -1,26 +1,32 @@
-import { AppBar, Toolbar, Button } from '@mui/material';
+import { AppBar, Toolbar, Button, Grid } from '@mui/material';
 
 export default function CustomAppBar() {
-    return (
-        <AppBar
-            sx={{
-                zIndex: (theme) => theme.zIndex.drawer + 1,
-                flexDirection: 'row'
-            }}
-        >
-            <Toolbar>
-                <Button href="/" variant="home">
-                    Home
-                </Button>
-                <Button href="/dashboard" variant="dashboard">
-                    Dashboard
-                </Button>
-                {false ? (
-                    <Button href="/" onClick={() => {}} variant="dashboard">
-                        Logout
-                    </Button>
-                ) : null}
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <AppBar
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        flexDirection: 'row'
+      }}
+    >
+      <Toolbar sx={{ width: '100vw' }}>
+        <Grid container columns={10}>
+          <Grid item xs={1}>
+            <Button href="/" variant="home">
+              Home
+            </Button>
+          </Grid>
+          <Grid item xs={1}>
+            <Button href="/dashboard" variant="dashboard">
+              Dashboard
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid item xs={1}>
+          <Button href="/login" onClick={() => {}} variant="logout">
+            Logout
+          </Button>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+  );
 }
