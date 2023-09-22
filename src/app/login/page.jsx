@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Box,
@@ -11,7 +11,10 @@ import {
 } from '@mui/material';
 
 export default function Login() {
-  localStorage.setItem('session', null);
+  useEffect(() => {
+    localStorage.setItem('session', null);
+  }, []);
+
   const router = useRouter();
   const [error, setError] = useState(false);
   const [reason, setReason] = useState('');
