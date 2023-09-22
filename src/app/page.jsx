@@ -40,7 +40,7 @@ export default function Main() {
   const router = useRouter();
   useEffect(() => {
     const session = JSON.parse(localStorage.getItem('session'));
-    if (!session) router.push('/login');
+    if (!session) return router.push('/login');
     fetchBookings(session.id).then((bookings) => setBookings(bookings));
   }, []);
 
