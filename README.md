@@ -1,7 +1,7 @@
 # Venue Booking System
 
 This is a project for my SBA.
-> **Status** : This system is still in development.
+> **Status** : This system has been done, probably no longer update it.
 
 ## Table of Content
 - [Venue Booking System](#venue-booking-system)

@@ -127,10 +127,23 @@ export default function CreateBookingModal({
             onChange={(event) => setPeriod(event.target.value)}
           >
             <MenuItem value={``}>None</MenuItem>
-            <MenuItem value={`P1`}>1st Period</MenuItem>
-            <MenuItem value={`P2`}>2nd Period</MenuItem>
-            <MenuItem value={`P3`}>3rd Period</MenuItem>
-            <MenuItem value={`AS`}>After School</MenuItem>
+            {[
+              '1st Period',
+              '2nd Period',
+              '3rd Period',
+              '4th Period',
+              '5th Period',
+              '6th Period',
+              'Lunch',
+              '7th Period',
+              '8th Period',
+              '9th Period',
+              'After School'
+            ].map((period) => (
+              <MenuItem key={`menuItem${period}`} value={period}>
+                {period}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
         <TextField
