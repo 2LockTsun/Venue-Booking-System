@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Modal, Box, Typography, Button, Grid } from '@mui/material';
 
+// * BookingInfoModal component for displaying booking details
+
 export default function BookingInfoModal({ open, onClose, booking }) {
+  // * State variables and its initial state for the booking to display as named
   const [bookingInfo, setBookingInfo] = useState({
     id: 'N/A',
     Venue: { roomName: 'N/A' },
@@ -11,11 +14,13 @@ export default function BookingInfoModal({ open, onClose, booking }) {
     purpose: 'N/A'
   });
 
+  // * useEffect to update the state variable when the booking prop changes
   useEffect(() => {
     if (!booking) return;
     setBookingInfo(booking);
   }, [booking]);
 
+  // * The actual layout of the modal
   return (
     <Modal
       open={open}
@@ -90,6 +95,7 @@ export default function BookingInfoModal({ open, onClose, booking }) {
             color="error"
             sx={{ margin: '1em' }}
             onClick={() => {
+              // * Delete the booking from the database
               fetch(`http://localhost:3000/api/booking/${bookingInfo.id}`, {
                 method: 'DELETE'
               }).then((res) => {

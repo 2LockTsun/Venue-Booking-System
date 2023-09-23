@@ -15,11 +15,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
+// * Helper functions for the DatePicker
 const today = dayjs();
 const oneMonthFromToday = today.add(1, 'month');
 const isSunday = (date) => {
   return date.day() === 0;
 };
+
+// * CreateBookingModal component for creating new bookings
 
 export default function CreateBookingModal({
   open,
@@ -27,11 +30,14 @@ export default function CreateBookingModal({
   staffInitial,
   venues
 }) {
+  // * State variables for the form as named
   const [venue, setVenue] = useState(``);
   const [period, setPeriod] = useState(``);
   const [reason, setReason] = useState('');
   const [error, setError] = useState(false);
   const [date, setDate] = useState(today);
+
+  // * THe actual layout of the modal
   return (
     <Modal
       open={open}
@@ -98,11 +104,14 @@ export default function CreateBookingModal({
             onChange={(event) => setVenue(event.target.value)}
           >
             <MenuItem value={``}>None</MenuItem>
-            {venues.map((venue, index) => (
-              <MenuItem key={`menuItem${index}`} value={venue.roomCode}>
-                {venue.roomName}
-              </MenuItem>
-            ))}
+            {
+              // * Dynamically display the venues
+              venues.map((venue, index) => (
+                <MenuItem key={`menuItem${index}`} value={venue.roomCode}>
+                  {venue.roomName}
+                </MenuItem>
+              ))
+            }
           </Select>
         </FormControl>
         <LocalizationProvider dateAdapter={AdapterDayjs}>

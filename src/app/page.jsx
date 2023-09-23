@@ -36,7 +36,10 @@ async function fetchBooking(bookingId) {
   return booking;
 }
 
+// * Home page for displaying all bookings of the related staff with a list
+
 export default function Main() {
+  // * Check if the user is logged in, and redirect it to login page if not
   const router = useRouter();
   useEffect(() => {
     const session = JSON.parse(localStorage.getItem('session'));
@@ -44,11 +47,13 @@ export default function Main() {
     fetchBookings(session.id).then((bookings) => setBookings(bookings));
   }, []);
 
+  // * State variables for this list as named
   const [bookings, setBookings] = useState([]);
   const [bookingInfoModalOpen, setBookingInfoModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState();
   const [selectionModel, setSelectionModel] = useState();
 
+  // * useEffect to update the state variable when the selectionModel prop changes
   useEffect(() => {
     if (selectionModel) {
       fetchBooking(selectionModel).then((booking) => {
@@ -57,6 +62,7 @@ export default function Main() {
     }
   }, [selectionModel]);
 
+  // * The columns of the list
   const columns = [
     { field: 'venue', headerName: 'Venue', width: 150 },
     { field: 'staff', headerName: 'Teacher', width: 150 },
@@ -65,6 +71,7 @@ export default function Main() {
     { field: 'purpose', headerName: 'Purpose', width: 300 }
   ];
 
+  // * The actual layout of the page
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <CustomAppBar />

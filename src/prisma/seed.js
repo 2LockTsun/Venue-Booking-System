@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
+// * This script is used to seed the database with initial data
+
 async function main() {
 
     await prisma.venue.upsert({
@@ -61,7 +63,6 @@ async function main() {
             staffInitial: 'ADM',
         }
     })
-
     await prisma.staff.upsert({
         where: { staffInitial: 'USR' },
         update: {},
@@ -85,7 +86,6 @@ async function main() {
             staffInitial: 'KA',
         }
     })
-
     await prisma.staff.upsert({
         where: { staffInitial: 'YA' },
         update: {},

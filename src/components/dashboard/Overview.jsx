@@ -6,6 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import CreateBookingModal from '../global/CreateBookingModal';
 import BookingInfoModal from '../global/BookingInfoModal';
 
+// * Helper functions for the DataGrid to fetch booking by id
 async function fetchBooking(bookingId) {
   const booking = await fetch(
     `http://localhost:3000/api/booking?bookingId=${bookingId}`
@@ -15,12 +16,16 @@ async function fetchBooking(bookingId) {
   return booking;
 }
 
+// * Overview component for displaying all bookings with a list
+
 export default function Overview({ bookings, venues, staffInitial }) {
+  // * State variables for this list as named
   const [createBookingModalOpen, setCreateBookingModalOpen] = useState(false);
   const [bookingInfoModalOpen, setBookingInfoModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState();
   const [selectionModel, setSelectionModel] = useState();
 
+  // * useEffect to update the state variable when the selectionModel prop changes
   useEffect(() => {
     if (selectionModel) {
       fetchBooking(selectionModel).then((booking) => {
@@ -29,6 +34,7 @@ export default function Overview({ bookings, venues, staffInitial }) {
     }
   }, [selectionModel]);
 
+  // * The columns of the list
   const columns = [
     { field: 'venue', headerName: 'Venue', width: 150 },
     { field: 'staff', headerName: 'Teacher', width: 150 },
@@ -37,6 +43,7 @@ export default function Overview({ bookings, venues, staffInitial }) {
     { field: 'purpose', headerName: 'Purpose', width: 300 }
   ];
 
+  // * The actual layout of the page
   return (
     <Box flex="1 1 100%" sx={{ flexDirection: 'column' }}>
       <Typography

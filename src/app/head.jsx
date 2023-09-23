@@ -1,3 +1,5 @@
+// * Head component for the Home page
+
 export default function Head() {
   return (
     <>

@@ -21,6 +21,7 @@ import Overview from '@/components/dashboard/Overview';
 import Profile from '@/components/dashboard/Profile';
 import Calendar from '@/components/dashboard/Calendar';
 
+// * Helper functions for the page to fetch all bookings
 async function fetchBookings() {
   const bookings = await fetch(`http://localhost:3000/api/booking`)
     .then((res) => res.json())
@@ -39,6 +40,7 @@ async function fetchBookings() {
   return bookings;
 }
 
+// * Helper functions for the page to fetch all venues
 async function fetchVenues() {
   const venues = await fetch(`http://localhost:3000/api/venue`)
     .then((res) => res.json())
@@ -46,18 +48,24 @@ async function fetchVenues() {
   return venues;
 }
 
+// * Dashboard page for displaying all bookings of the related staff with a list and a calendar
+// * Also contains a profile page for the staff to view and edit their profile
+
 export default function Dashboard() {
+  // * State variables for this page as named
   const router = useRouter();
   const [session, setSession] = useState();
   const [screen, setScreen] = useState(0);
   const [bookings, setBookings] = useState([]);
   const [venues, setVenues] = useState([]);
 
+  // * Check if the user is logged in, and redirect it to login page if not
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('session'));
     if (!user) router.push('/login');
     setSession(user);
 
+    // * Fetch all bookings and venues from the database
     fetchBookings().then((bookings) => setBookings(bookings));
     fetchVenues().then((venues) => setVenues(venues));
   }, []);

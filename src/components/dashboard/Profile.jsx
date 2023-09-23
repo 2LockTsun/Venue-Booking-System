@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 
+// * Profile component for displaying staff profile
+
 export default function Profile({ staff }) {
   const [password, setPassword] = useState(staff.password);
   return (
@@ -50,6 +52,7 @@ export default function Profile({ staff }) {
           <Button
             variant="contained"
             onClick={() => {
+              // * UPDATE the password of the staff on the database
               fetch(`/api/staff?id=${staff.id}`, {
                 method: 'PUT',
                 headers: {
