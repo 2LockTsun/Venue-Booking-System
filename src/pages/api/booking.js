@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client"
+import dayjs from 'dayjs'
 
 const prisma = new PrismaClient()
+
+const validDate = dayjs().hour(0).minute(0).second(0).millisecond(0).toDate()
 
 export default async function handler(req, res) {
     // * If the request method is not POST or GET, return 405 Method Not Allow
@@ -11,7 +14,7 @@ export default async function handler(req, res) {
         const { purpose, bookingDate, bookingPeriod, roomCode, staffInitial } = req.body
         if(!purpose || !bookingDate || !bookingPeriod || !roomCode || !staffInitial) return res.status(400).json({ status: 400, message: 'Bad Request' })
         
-        const count = await prisma.booking.count({where: {staffInitial, bookingDate: {gte: new Date()}}})
+        const count = await prisma.booking.count({where: {staffInitial, bookingDate: {gte: validDate}}})
         if(count >= 4) return res.status(403).json({ status: 403, message: 'Forbidden' })
 
         const bookings = await prisma.booking.findMany({where: {bookingDate, bookingPeriod, roomCode}})
