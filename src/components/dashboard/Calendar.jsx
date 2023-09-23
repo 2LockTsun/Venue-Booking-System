@@ -11,7 +11,7 @@ import listPlugin from '@fullcalendar/list';
 
 import BookingInfoModal from '../global/BookingInfoModal';
 
-// * Helper functions for fetching bookings from the database
+// Helper functions for fetching bookings from the database
 async function fetchBookings() {
   const bookings = await fetch(`http://localhost:3000/api/booking`)
     .then((res) => res.json())
@@ -19,7 +19,7 @@ async function fetchBookings() {
   return bookings;
 }
 
-// * Helper functions for fetching booking by id
+// Helper functions for fetching booking by id
 async function fetchBooking(bookingId) {
   const booking = await fetch(
     `http://localhost:3000/api/booking?bookingId=${bookingId}`
@@ -29,16 +29,16 @@ async function fetchBooking(bookingId) {
   return booking;
 }
 
-// * Calendar component for displaying all bookings with a calendar
+// Calendar component for displaying all bookings with a calendar
 
 export default function Calendar() {
-  // * State variables for the calendar as named
+  // State variables for the calendar as named
   const [bookings, setBookings] = useState([]);
   const [bookingInfoModalOpen, setBookingInfoModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState();
   const [selectionModel, setSelectionModel] = useState();
 
-  // * useEffect to update the state variable when the selectionModel prop changes
+  // useEffect to update the state variable when the selectionModel prop changes
   useEffect(() => {
     if (selectionModel) {
       fetchBooking(selectionModel).then((booking) => {
@@ -47,12 +47,12 @@ export default function Calendar() {
     }
   }, [selectionModel]);
 
-  // * useEffect to update the state variable as the page loaded
+  // useEffect to update the state variable as the page loaded
   useEffect(() => {
     fetchBookings().then((bookings) => setBookings(bookings));
   }, []);
 
-  // * Helper function to convert bookings fetched from api to events on calendar
+  // Helper function to convert bookings fetched from api to events on calendar
   const events = bookings.map((booking) => {
     return {
       title: `${booking.roomCode} - ${booking.bookingPeriod} | ${booking.staffInitial}`,
@@ -62,7 +62,7 @@ export default function Calendar() {
     };
   });
 
-  // * The actual layout of the page
+  // The actual layout of the page
   return (
     <Box flex="1 1 100%">
       <BookingInfoModal

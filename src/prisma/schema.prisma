@@ -1,16 +1,16 @@
-// * This is the Prisma schema file
+// This is the Prisma schema file
 
 generator client {
   provider = "prisma-client-js"
 }
 
-// * We are now using SQLite as our database
+// We are now using SQLite as our database
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
 
-// * This is the model of Bookings in the database
+// This is the model of Bookings in the database
 model Booking {
   id Int @id @default(autoincrement())
 
@@ -27,7 +27,7 @@ model Booking {
   Venue Venue? @relation(fields: [roomCode], references: [roomCode])
 }
 
-// * This is the model of Staff in the database
+// This is the model of Staff in the database
 model Staff {
   id    Int     @id @default(autoincrement())
   admin Boolean @default(false)
@@ -40,7 +40,7 @@ model Staff {
   Booking Booking[]
 }
 
-// * This is the model of Venues in the database
+// This is the model of Venues in the database
 model Venue {
   roomCode String @id
   roomName String

@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Button, Grid } from '@mui/material';
 
-// * Custom AppBar for the application
+// Custom AppBar for the application
 
 export default function CustomAppBar() {
   return (

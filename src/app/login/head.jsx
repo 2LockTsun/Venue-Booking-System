@@ -1,4 +1,4 @@
-// * Head component for the Login page
+// Head component for the Login page
 
 export default function Head() {
   return (

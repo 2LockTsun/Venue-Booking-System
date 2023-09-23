@@ -6,10 +6,10 @@ const prisma = new PrismaClient()
 const validDate = dayjs().hour(0).minute(0).second(0).millisecond(0).toDate()
 
 export default async function handler(req, res) {
-    // * If the request method is not POST or GET, return 405 Method Not Allow
+    // If the request method is not POST or GET, return 405 Method Not Allow
     if(req.method !== 'POST' && req.method !== 'GET') return res.status(405).json({ status: 405, message: 'Method Not Allow' })
 
-    // * If the request method is POST, check with different requirements and create a new booking
+    // If the request method is POST, check with different requirements and create a new booking
     if(req.method === 'POST') {
         const { purpose, bookingDate, bookingPeriod, roomCode, staffInitial } = req.body
         if(!purpose || !bookingDate || !bookingPeriod || !roomCode || !staffInitial) return res.status(400).json({ status: 400, message: 'Bad Request' })
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     }
 
 
-    // * If the request method is GET, return all bookings or a booking with the id or all bookings of a staff with the id
+    // If the request method is GET, return all bookings or a booking with the id or all bookings of a staff with the id
     const bookingId = Number(req.query.bookingId)
     const userId = Number(req.query.userId)
     if(!bookingId && !userId) return res.status(200).json({status: 200, bookings: await prisma.booking.findMany({where: {}, include: {Staff: true, Venue: true}})})

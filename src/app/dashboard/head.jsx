@@ -1,4 +1,4 @@
-// * Head component for the the Dashboard page
+// Head component for the the Dashboard page
 
 export default function Head() {
   return (

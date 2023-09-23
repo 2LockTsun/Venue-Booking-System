@@ -1,6 +1,6 @@
 import './globals.css';
 
-// * This is the root layout for the entire app
+// This is the root layout for the entire app
 
 export default function RootLayout({ children }) {
   return (

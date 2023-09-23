@@ -10,20 +10,20 @@ import {
   CssBaseline
 } from '@mui/material';
 
-// * Login page for logging in to the application
+// Login page for logging in to the application
 
 export default function Login() {
-  // * Clear the session when the page is loaded
+  // Clear the session when the page is loaded
   useEffect(() => {
     localStorage.setItem('session', null);
   }, []);
 
-  // * State variables for this page as named
+  // State variables for this page as named
   const router = useRouter();
   const [error, setError] = useState(false);
   const [reason, setReason] = useState('');
 
-  // * The actual page content
+  // The actual page content
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -50,7 +50,7 @@ export default function Login() {
             e.preventDefault();
             const data = new FormData(e.currentTarget);
 
-            // * Send a POST request to the api to log in
+            // Send a POST request to the api to log in
             fetch('/api/login', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

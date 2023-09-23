@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-// * This script is used to seed the database with initial data
+// This script is used to seed the database with initial data
 
 async function main() {
 
